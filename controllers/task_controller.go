@@ -80,7 +80,7 @@ func (t *TaskController) Submit(c *gin.Context) {
 
 	//New attachments
 	attachment = file.Filename
-	errSave := c.SaveUploadedFile(file, "attachment/"+attachment)
+	errSave := c.SaveUploadedFile(file, "attachments/"+attachment)
 	if errSave != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": errSave.Error()})
 		return
