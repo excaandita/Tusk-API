@@ -66,11 +66,11 @@ func (u *UserController) CreateAccount(c *gin.Context) {
 	errDb := u.DB.Create(&user).Error
 
 	if errDb != nil {
-		c.JSON(http.StatusCreated, gin.H{"error": errDb.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": errDb.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, user)
+	c.JSON(http.StatusCreated, user)
 }
 
 func (u *UserController) DeleteAccount(c *gin.Context) {
